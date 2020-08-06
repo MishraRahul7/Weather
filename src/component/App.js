@@ -25,7 +25,6 @@ const App = () => {
       rain: apiData.rain,
       error: "",
     });
-    console.log(apiData);
   };
 
   return (
@@ -40,7 +39,6 @@ const App = () => {
         weather={weather.weather}
         description={weather.description}
       />
-      {console.log(weather)}
     </>
   );
 };

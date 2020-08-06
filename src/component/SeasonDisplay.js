@@ -43,7 +43,6 @@ const SeasonDisplay = (props) => {
             {props.description && (
               <Typography>Description: {props.description}</Typography>
             )}
-            {props.description && <Typography>:{props.description}</Typography>}
           </Paper>
         </Grid>
       </Grid>
