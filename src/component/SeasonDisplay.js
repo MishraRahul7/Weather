@@ -1,52 +1,49 @@
 import React from "react";
-import {
-  Grid,
-  Button,
-  TextField,
-  Typography,
-  Paper,
-  makeStyles,
-} from "@material-ui/core";
-const useStyles = makeStyles({
+import { Grid, makeStyles, Paper, Typography } from "@material-ui/core";
+const useStyles = makeStyles((theme) => ({
   root: {
-    width: "100vw",
-    height: "100vh",
-    backgroundColor: "LightGreen",
-    position: "absolute",
-  },
-  cardStyle: {
     height: "50vh",
     marginTop: "20px",
+    padding: "20px",
     textAlign: "Center",
+    [theme.breakpoints.down("sm")]: {
+      height: "auto",
+      margin: "10px 10px 0px 10px",
+    },
   },
-});
+}));
 const SeasonDisplay = (props) => {
   const classes = useStyles();
   return (
     <>
-      <Grid container justify="center" className={classes.root}>
+      <Grid container justify="center">
         <Grid item xs={12} md={6}>
-          <Paper elevation={10} className={classes.cardStyle}>
-            <form onSubmit={props.getWeatherData}>
-              <Typography style={{ fontSize: "2em" }}>
-                WEATHER REPORT
+          <Paper elevation={5} className={classes.root}>
+            {props.city && (
+              <Typography>
+                {props.city},{props.country}
               </Typography>
-              <TextField
-                size="small"
-                variant="outlined"
-                label="City"
-                name="city"
-              ></TextField>
-              <TextField
-                size="small"
-                variant="outlined"
-                label="Country"
-                name="country"
-              ></TextField>
-              <Button variant="outlined" size="small" type="submit">
-                Search
-              </Button>
-            </form>
+            )}
+
+            {props.temperature && (
+              <Typography>Temperature:{props.temperature}</Typography>
+            )}
+            {props.tempMin &&
+              props.tempMax &&
+              ((<Typography>{props.temperature}</Typography>),
+              (
+                <Typography>
+                  Max: {props.tempMax}
+                  {"       "}Min:{props.tempMin}
+                </Typography>
+              ))}
+            {props.weather && (
+              <Typography>Today's Weather:{props.weather}</Typography>
+            )}
+            {props.description && (
+              <Typography>Description: {props.description}</Typography>
+            )}
+            {props.description && <Typography>:{props.description}</Typography>}
           </Paper>
         </Grid>
       </Grid>
