@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+
 import Search from "./Search";
 import SeasonDisplay from "./SeasonDisplay";
 const App = () => {
   const [weather, setWeather] = useState([]);
   const API_KEY = "1e1b3737a87fc54a2718055f5bbf7514";
+
   const fetchWeatherData = async (e) => {
     e.preventDefault();
     const city = e.target.elements.city.value;
