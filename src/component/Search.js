@@ -9,11 +9,14 @@ import {
 } from "@material-ui/core";
 const useStyles = makeStyles((theme) => ({
   cardStyle: {
+    fontFamily: "roboto",
+    backgroundColor: "transparent",
     marginTop: "20px",
     padding: "20px",
     textAlign: "Center",
+    color: "white",
     [theme.breakpoints.down("sm")]: {
-      margin: "10px 10px 0px 10px",
+      margin: "0px 0px 0px 0px",
     },
   },
 }));
@@ -23,7 +26,7 @@ const Search = (props) => {
     <>
       <Grid container justify="center">
         <Grid item xs={12} md={6}>
-          <Paper elevation={5} className={classes.cardStyle}>
+          <Paper elevation={0} className={classes.cardStyle}>
             <form onSubmit={props.getWeatherData}>
               <Typography style={{ fontSize: "2em", paddingBottom: "20px" }}>
                 WEATHER REPORT
@@ -33,10 +36,24 @@ const Search = (props) => {
                 variant="outlined"
                 label="City"
                 name="city"
+                InputLabelProps={{
+                  style: { color: "white" },
+                }}
+                InputProps={{
+                  style: { color: "white" },
+                }}
               />
               <br />
               <br />
-              <Button variant="outlined" size="small" type="submit">
+              <Button
+                style={{
+                  color: "white",
+                  borderColor: "white",
+                }}
+                variant="outlined"
+                size="small"
+                type="submit"
+              >
                 Search
               </Button>
             </form>

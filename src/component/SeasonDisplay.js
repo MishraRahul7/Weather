@@ -2,46 +2,79 @@ import React from "react";
 import { Grid, makeStyles, Paper, Typography } from "@material-ui/core";
 const useStyles = makeStyles((theme) => ({
   root: {
-    height: "50vh",
-    marginTop: "20px",
-    padding: "20px",
-    textAlign: "Center",
+    fontFamily: "roboto",
+    backgroundColor: "transparent",
+    color: "white",
+    marginBottom: "30px",
+    textAlign: "center",
     [theme.breakpoints.down("sm")]: {
-      height: "auto",
-      margin: "10px 10px 0px 10px",
+      width: "80vw",
+      margin: "10px 10px 0px 20px",
     },
+  },
+  alignCenter: {
+    textAlign: "center",
   },
 }));
 const SeasonDisplay = (props) => {
   const classes = useStyles();
   return (
     <>
-      <Grid container justify="center">
-        <Grid item xs={12} md={6}>
-          <Paper elevation={5} className={classes.root}>
-            {props.city && (
-              <Typography>
-                {props.city},{props.country}
+      <Grid container justify="center" alignContent="center" direction="column">
+        <Grid item xs={12} md={3}>
+          <Paper elevation={0} className={classes.root}>
+            {props.error && (
+              <Typography style={{ fontSize: "2em", color: "white" }}>
+                {props.error}
               </Typography>
             )}
-
-            {props.temperature && (
-              <Typography>Temperature:{props.temperature}</Typography>
-            )}
-            {props.tempMin &&
-              props.tempMax &&
-              ((<Typography>{props.temperature}</Typography>),
-              (
-                <Typography>
-                  Max: {props.tempMax}
-                  {"       "}Min:{props.tempMin}
+          </Paper>
+        </Grid>
+        <Grid item xs={12} md={3}>
+          <Paper elevation={0} className={classes.root}>
+            {props.city &&
+              props.currentTime &&
+              props.wicon &&
+              props.region &&
+              props.country && (
+                <Typography className={classes.alignCenter}>
+                  <img src={props.wicon} alt="weather icon" />
+                  <br />
+                  <span style={{ fontSize: "1em" }}>{props.city}</span>
+                  <br />
+                  <span>
+                    {props.region}, {props.country}
+                    <br />
+                    {props.currentTime}
+                  </span>
                 </Typography>
-              ))}
-            {props.weather && (
-              <Typography>Today's Weather:{props.weather}</Typography>
-            )}
-            {props.description && (
-              <Typography>Description: {props.description}</Typography>
+              )}
+          </Paper>
+        </Grid>
+        <Grid item xs={12} md={3}>
+          <Paper elevation={0} className={classes.root}>
+            <Typography className={classes.alignCenter}>
+              {props.temperature && (
+                <span style={{ fontSize: "4em" }}>{props.temperature}°C</span>
+              )}
+            </Typography>
+          </Paper>
+        </Grid>
+        <Grid item xs={12} md={3}>
+          <Paper elevation={0} className={classes.root}>
+            {props.wspeed && props.humidity && props.wdegree && props.wdir && (
+              <Typography>
+                <span>
+                  Humidity
+                  <br /> {props.humidity} %
+                </span>
+                <br />
+                <span>
+                  Wind Speed <br />
+                  {props.wspeed} km/h
+                </span>
+                <br />
+              </Typography>
             )}
           </Paper>
         </Grid>
