@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Search from "./Search";
 import SeasonDisplay from "./SeasonDisplay";
 import bgImage from "../image/bg_image.jpg";
-import { makeStyles } from "@material-ui/core";
+import { Grid, makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
   bg: {
     width: "100vw",
     height: "100vh",
-    backdropFilter: "blur(15px)",
+    backdropFilter: "blur(10px)",
   },
 }));
 
@@ -29,7 +29,9 @@ const App = () => {
       `http://api.weatherstack.com/current?access_key=${API_KEY}&query=${city}`
     )
       .then((res) => res.json())
-      .catch((data) => data);
+      .catch((err) => {
+        console.log(err);
+      });
     if (city) {
       setWeather({
         city: apiData.location.name,
@@ -68,24 +70,28 @@ const App = () => {
   return (
     <>
       <div className={classes.root}>
-        <div className={classes.bg}>
-          <Search getWeatherData={fetchWeatherData} />
-          <SeasonDisplay
-            city={weather.city}
-            region={weather.region}
-            country={weather.country}
-            currentTime={weather.currentTime}
-            temperature={weather.temperature}
-            humidity={weather.humidity}
-            cloud={weather.cloud}
-            description={weather.description}
-            wspeed={weather.wspeed}
-            wdegree={weather.wdegree}
-            wdir={weather.wdir}
-            wicon={weather.wicon}
-            error={weather.error}
-          />
-        </div>
+        <Grid container direction="row" className={classes.bg}>
+          <Grid item xs={12} md={12}>
+            <Search getWeatherData={fetchWeatherData} />
+          </Grid>
+          <Grid item xs={12} md={12}>
+            <SeasonDisplay
+              city={weather.city}
+              region={weather.region}
+              country={weather.country}
+              currentTime={weather.currentTime}
+              temperature={weather.temperature}
+              humidity={weather.humidity}
+              cloud={weather.cloud}
+              description={weather.description}
+              wspeed={weather.wspeed}
+              wdegree={weather.wdegree}
+              wdir={weather.wdir}
+              wicon={weather.wicon}
+              error={weather.error}
+            />
+          </Grid>
+        </Grid>
       </div>
     </>
   );
