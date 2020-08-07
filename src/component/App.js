@@ -26,7 +26,7 @@ const App = () => {
     e.preventDefault();
     const city = e.target.elements.city.value;
     const apiData = await fetch(
-      `http://api.weatherstack.com/current?access_key=${API_KEY}&query=${city}`
+      `https://api.weatherstack.com/current?access_key=${API_KEY}&query=${city}`
     )
       .then((res) => res.json())
       .catch((err) => {
