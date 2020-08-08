@@ -34,14 +34,12 @@ const Search = (props) => {
               <TextField
                 size="small"
                 variant="outlined"
-                placeholder="Enter City Name"
+                label="Enter City Name"
                 name="city"
                 InputLabelProps={{
                   style: { color: "white" },
                 }}
-                InputProps={{
-                  style: { color: "white" },
-                }}
+                InputProps={{ style: { color: "white" } }}
               />
               <br />
               <br />
