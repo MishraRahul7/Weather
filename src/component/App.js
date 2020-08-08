@@ -22,7 +22,7 @@ const App = () => {
 
     const city = e.target.elements.city.value;
     const apiData = await fetch(
-      `http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${API_KEY}`
+      `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=${API_KEY}`
     )
       .then((res) => res.json())
       .catch((err) => {
@@ -33,9 +33,9 @@ const App = () => {
         city: apiData.name,
         country: apiData.sys.country,
         feels_like: apiData.main.feels_like,
-        temperature: apiData.main.temp,
+        temp: apiData.main.temp,
         humidity: apiData.main.humidity,
-        description: apiData.weather[0].descriptions,
+        description: apiData.weather[0].description,
         wspeed: apiData.wind.speed,
         wdegree: apiData.wind.deg,
         wicon: apiData.weather[0].icon,
@@ -48,7 +48,7 @@ const App = () => {
 
         country: "",
         feels_like: "",
-        temperature: "",
+        temp: "",
         humidity: "",
         cloud: "",
         description: "",
@@ -70,7 +70,7 @@ const App = () => {
         <SeasonDisplay
           city={weather.city}
           country={weather.country}
-          temperature={weather.temperature}
+          temp={weather.temp}
           feels_like={weather.feels_like}
           humidity={weather.humidity}
           cloud={weather.cloud}
