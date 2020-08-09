@@ -22,7 +22,7 @@ const App = () => {
 
     const city = e.target.elements.city.value;
     const apiData = await fetch(
-      `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=${API_KEY}`
+      `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=${API_KEY}`
     )
       .then((res) => res.json())
       .catch((err) => {
@@ -45,7 +45,6 @@ const App = () => {
     } else {
       setWeather({
         city: "",
-
         country: "",
         feels_like: "",
         temp: "",
@@ -54,9 +53,7 @@ const App = () => {
         description: "",
         wicon: "",
         wspeed: "",
-
         wdegree: "",
-
         error: "Please enter a city",
       });
     }

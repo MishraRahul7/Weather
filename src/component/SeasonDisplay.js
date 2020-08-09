@@ -29,6 +29,7 @@ const SeasonDisplay = (props) => {
       <Grid container direction="column" alignContent="center">
         <Grid item xs={12} md={6} className={classes.gridPaper}>
           <Paper elevation={5} className={classes.mainPaper}>
+            {props.error && <Typography>{props.error}</Typography>}
             {props.city && props.country && (
               <Typography style={{ fontSize: "2em" }}>
                 {props.city}, {props.country}
@@ -42,20 +43,34 @@ const SeasonDisplay = (props) => {
               </Typography>
             )}
             {props.temp && (
-              <Typography style={{ fontSize: "3em", marginLeft: "20%" }}>
-                {props.temp}°C
+              <Typography>
+                <span style={{ fontSize: "3em", marginLeft: "20%" }}>
+                  {props.temp}
+                </span>
+                <sup>°C</sup>
               </Typography>
             )}
             {props.feels_like && props.humidity && props.wspeed && (
               <Typography>
-                Feels Like:
-                {props.feels_like}
+                <span>
+                  Feels Like
+                  <br />
+                  {props.feels_like}
+                </span>
                 <br />
-                Humidity:
-                {props.humidity}%
+
+                <span>
+                  Humidity
+                  <br />
+                  {props.humidity}%
+                </span>
                 <br />
-                Wind:
-                {props.wspeed} km/h
+
+                <span>
+                  Wind Speed
+                  <br />
+                  {props.wspeed} km/h
+                </span>
               </Typography>
             )}
           </Paper>
