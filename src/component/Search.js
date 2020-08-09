@@ -47,6 +47,7 @@ const Search = (props) => {
                 style={{
                   color: "white",
                   borderColor: "white",
+                  marginBottom: "20px",
                 }}
                 variant="outlined"
                 size="small"
