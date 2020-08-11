@@ -8,18 +8,22 @@ const useStyles = makeStyles((theme) => ({
   },
   mainPaper: {
     backgroundColor: "transparent",
-
+    borderTop: "2px solid white",
+    borderLeft: "2px solid white",
+    borderBottom: "2px solid white",
     padding: "20px",
-    height: "100%",
+    height: "80%",
     width: "40%",
     color: "white",
   },
   mainPaper1: {
     backgroundColor: "transparent",
-    borderRadius: "10px",
+    borderTop: "2px solid white",
+    borderRight: "2px solid white",
+    borderBottom: "2px solid white",
     padding: "20px",
-    height: "100%",
-    width: "100%",
+    height: "80%",
+    width: "40%",
     color: "white",
   },
   error: {
@@ -52,6 +56,7 @@ const SeasonDisplay = (props) => {
             )}
             {props.temp && (
               <Typography>
+                <br />
                 <span style={{ fontSize: "3em" }}>{props.temp}</span>
                 <sup style={{ fontSize: "2em" }}>°C</sup>
               </Typography>
@@ -63,15 +68,16 @@ const SeasonDisplay = (props) => {
                 <span>
                   Feels Like:&nbsp;
                   {props.feels_like}
+                  °C
                 </span>
                 <br />
-
+                <br />
                 <span>
                   Humidity:&nbsp;
                   {props.humidity}%
                 </span>
                 <br />
-
+                <br />
                 <span>
                   Wind Speed:&nbsp;
                   {props.wspeed} km/h
